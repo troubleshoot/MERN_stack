@@ -32,4 +32,23 @@ const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * @param {Array<number>} nums
  * @returns {Array<number>} The given array after being sorted.
  */
-function selectionSort(nums) {}
+function selectionSort(nums) {
+  for(let i = 0; i < nums.length; i++) {
+    let min = i;
+    for(let j = i + 1; j < nums.length; j++) {
+      if (nums[min] > nums[j])
+        min = j;
+    }
+    if(min !== i) {
+      let temp = nums[i];
+      nums[i] = nums[min];
+      nums[min] = temp;
+    }
+  }
+  return nums;
+}
+
+console.log(selectionSort(numsOrdered));
+console.log(selectionSort(numsRandomOrder));
+console.log(selectionSort(numsReversed));
+console.log(selectionSort(expected));
